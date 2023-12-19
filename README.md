@@ -39,8 +39,8 @@ Before running the project, make sure you have the following installed:
 2. **Create a `.env` file in the project root and add your environment variables:**
 
     ```env
-    NODE_ENV=development
-    PUPPETEER_EXECUTABLE_PATH=/path/to/your/puppeteer/executable
+    PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = true
+    PUPPETEER_EXECUTABLE_PATH = /usr/bin/google-chrome-stable
 
 2. **Run the application:**
 
@@ -64,16 +64,17 @@ The API exposes an endpoint for scraping text from a specified image URL. See th
 4. **Example Request:** 
         
     ```bash
-    curl http://localhost:3000/reverse?url=https://example.com/image.png
+    curl http://localhost:3000/reverse?url=https://te.legra.ph/file/14632fbfeea4766941a14.png
 
 5. **Example Response:**
 
     ```json
     {
     "result": {
-        "image": "Text extracted from the image"
+        "image": "luffy hd",
+        "requestUrl": "https://images.google.com/searchbyimage?safe=off&sbisrc=tg&image_url=https://te.legra.ph/file/14632fbfeea4766941a14.png"
     },
-    "similarUrl": "https://www.google.com/search?tbm=isch&q=Text+extracted+from+the+image"
+    "similarUrl": "https://www.google.com/search?tbm=isch&q=luffy%20hd"
     }
 
 6. **If the image text cannot be found, the response will include a message:**
