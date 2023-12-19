@@ -28,7 +28,8 @@ app.get('/reverse', async (req, res) => {
     if (!browserInstance) {
       // Launch a new browser instance if it doesn't exist
       browserInstance = await puppeteer.launch({
-        executablePath: puppeteerExecutablePath
+        executablePath: puppeteerExecutablePath,
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
     }
 
