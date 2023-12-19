@@ -35,7 +35,11 @@ app.get('/reverse', async (req, res) => {
 
     const page = await browserInstance.newPage();
 
-    await page.goto(`https://images.google.com/searchbyimage?safe=off&sbisrc=tg&image_url=${imageUrl}`);
+    const gotoOptions = {
+      timeout: 10000, // 10 seconds
+    };
+
+    await page.goto(`https://images.google.com/searchbyimage?safe=off&sbisrc=tg&image_url=${imageUrl}`, gotoOptions);
 
     // Wait for some time to ensure the page is fully loaded (adjust as needed)
     await page.waitForTimeout(5000);
@@ -49,7 +53,7 @@ app.get('/reverse', async (req, res) => {
       return res.json({ result: { message: 'Cannot find the matched image from the URL' } });
     }
 
-    res.json({ result: { image: textareaValue }, similarUrl:`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(textareaValue)}` });
+    res.json({ result: { image: textareaValue, requestUrl: `https://images.google.com/searchbyimage?safe=off&sbisrc=tg&image_url=${imageUrl}` }, similarUrl:`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(textareaValue)}` });
   } catch (error) {
     console.error('Error during scraping:', error);
     res.status(500).json({ error: 'Internal server error' });
