@@ -9,6 +9,7 @@ A simple Express API using Puppeteer to scrape text from a specified image URL a
 - [Usage](#usage)
 - [Environment Variables](#environment-variables)
 - [Endpoints](#endpoints)
+- [Deploy](#deploy)
 - [License](#license)
 
 ## Prerequisites
@@ -83,6 +84,22 @@ The API exposes an endpoint for scraping text from a specified image URL. See th
         "message": "Cannot find the matched image from the URL"
     }
     }
+
+## Deploy
+
+You can deploy the app at following platform 
+
+1. **Heroku**
+
+    <a aria-label="Deploy to Heroku" href="https://dashboard.heroku.com/new?template=https://github.com/Awesome-Tofu/google-reverse-api" target="_blank">
+        <img alt="Heroku" src="https://www.herokucdn.com/deploy/button.svg" />
+    </a>
+
+2. **Render**
+
+    <a aria-label="Deploy to Heroku" href="https://render.com/deploy?repo=https://github.com/Awesome-Tofu/google-reverse-api" target="_blank">
+        <img alt="Heroku" src="https://render.com/images/deploy-to-render-button.svg" />
+    </a>
 
 ## License
 

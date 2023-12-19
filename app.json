@@ -1,0 +1,37 @@
+{
+    "name": "Reverse-API",
+    "description": "Loli",
+    "repository": "https://github.com/Awesome-Tofu/google-reverse-api",
+    "logo": "https://i.pinimg.com/564x/b2/df/4d/b2df4d8f843409b93d47b7722f187977.jpg",
+    "keywords": ["nodejs", "reverse", "API"],
+    "env": {
+    "PUPPETEER_EXECUTABLE_PATH": {
+      "description": "Leave it as default",
+      "value": "/app/.apt/usr/bin/google-chrome",
+      "required": true
+    },
+    "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": {
+      "description": "Leave it as default",
+      "value": "true",
+      "required": true
+    }
+     },    
+    "buildpacks": [
+      {
+        "url": "heroku/nodejs"
+      },
+      {
+        "url": "https://github.com/heroku/heroku-buildpack-google-chrome.git"
+      },
+      {
+         "url": "https://github.com/jontewks/puppeteer-heroku-buildpack.git"
+      }
+    ],
+     "formation": {
+         "web": {
+             "quantity": 1,
+             "size": "basic"
+         }
+      }
+  }
+  
