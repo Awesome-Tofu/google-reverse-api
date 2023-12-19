@@ -26,20 +26,26 @@ app.get('/reverse', async (req, res) => {
 
   try {
     if (!browserInstance) {
-      // Launch a new browser instance if it doesn't exist
       browserInstance = await puppeteer.launch({
         executablePath: puppeteerExecutablePath,
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        defaultViewport: null,
+        timeout: 20000,
     });
+
     }
 
     const page = await browserInstance.newPage();
 
-    const gotoOptions = {
-      timeout: 10000, // 10 seconds
-    };
 
-    await page.goto(`https://images.google.com/searchbyimage?safe=off&sbisrc=tg&image_url=${imageUrl}`, gotoOptions);
+    const navigationPromise = page.waitForNavigation({
+      timeout: 10000, // Set a specific timeout for this navigation (adjust as needed)
+      waitUntil: 'domcontentloaded', // Wait until the DOM content is loaded
+    });
+
+    await page.goto(`https://images.google.com/searchbyimage?safe=off&sbisrc=tg&image_url=${imageUrl}`);
+
+    await navigationPromise;
 
     // Wait for some time to ensure the page is fully loaded (adjust as needed)
     await page.waitForTimeout(5000);
