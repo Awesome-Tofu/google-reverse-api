@@ -53,7 +53,7 @@ The API exposes an endpoint for scraping text from a specified image URL. See th
 
 ## Endpoints
 
-# Reverse Image Text
+### Reverse Image Text
 
 1. **URL:** `/reverse`
 
