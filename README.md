@@ -1,6 +1,6 @@
-# Puppeteer Image Scraper
+# Google Reverse API
 
-A simple Express API using Puppeteer to scrape text from a specified image URL and provide related information.
+A simple Express API using Puppeteer to scrape text from a specified image URL and provide related information using Google.
 
 ## Table of Contents
 
